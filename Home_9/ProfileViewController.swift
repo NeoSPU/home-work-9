@@ -13,9 +13,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var surNameLabel: UILabel!
     
-    var newName: String?
-    var newSurname: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,8 +21,14 @@ class ProfileViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileEditor", let destVC = segue.destination as? EditorViewController {
             destVC.delegate = self
-            destVC.oldName = nameLabel.text
-            destVC.oldSurname = surNameLabel.text
+            
+            if let n1 = nameLabel.text {
+                destVC.name = n1
+            }
+            
+            if let s1 = surNameLabel.text {
+                destVC.surname = s1
+            }
         }
     }
 }

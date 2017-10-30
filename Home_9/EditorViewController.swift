@@ -19,22 +19,19 @@ class EditorViewController: UIViewController {
     var name: String = ""
     var surname: String = ""
     
-    var oldName: String?
-    var oldSurname: String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.text = oldName
-        surnameTextField.text = oldSurname
+        nameTextField.text = name
+        surnameTextField.text = surname
     }
 
     @IBAction private func acceptButttonPressed(_ sender: Any) {
-        if let n = nameTextField.text, n != "" {
+        if let n = nameTextField.text, !n.isEmpty {
                 name = n.capitalized
             }
         else { name = "Undefined" }
         
-        if let s = surnameTextField.text, s != "" {
+        if let s = surnameTextField.text, !s.isEmpty {
             surname = s.capitalized
         }
         else { surname = "Undefined" }
